@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Nastaliq Urdu', 'Segoe UI', system-ui, sans-serif;
+    background-color: #f5f0e8;
+    color: #2c3e2f;
+    line-height: 1.6;
+}
+
+.app-container {
+    max-width: 600px;  /* मोबाइल ऐप जैसा लुक */
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
