@@ -1,0 +1,23 @@
+# Site settings
+title: ChamaneTaiba
+description: Urdu Islamic Lyrics - Naat, Hamd, Manqabat Aur Islamic Nasheed
+url: "https://chamanetaiba.github.io"  # Aapke GitHub Pages URL se replace karein
+baseurl: ""  # Agar custom domain hai to "/reponame" warna blank rakhein
+
+# Build settings
+markdown: kramdown
+theme: minima  # Default theme use karte hain
+plugins:
+  - jekyll-feed
+
+# Permalink structure for posts
+permalink: /:categories/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "ChamaneTaiba"
