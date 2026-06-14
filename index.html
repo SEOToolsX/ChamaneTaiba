@@ -3,44 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ChamaneTaiba - Islamic Lyrics</title>
+    <title>ChamaneTaiba - Categories</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="images/icon-192.png">
     <meta name="theme-color" content="#1a472a">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header / App Bar -->
-        <header>
-            <h1>چمنِ طیبہ</h1>
-            <div class="search-box">
-                <input type="search" placeholder="نعت / لفظ یہاں تلاش کریں...">
-            </div>
-        </header>
+<div class="app-container">
+    <!-- Header -->
+    <header>
+        <h1>🌹 چمنِ طیبہ 🌹</h1>
+        <div class="search-box">
+            <input type="search" placeholder="نعت / لفظ یہاں تلاش کریں...">
+        </div>
+    </header>
 
-        <!-- Main Content -->
-        <main>
-            <div class="lyrics-list">
+    <!-- Main Content with Categories -->
+    <main>
+        <!-- Category 1: Naat -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2>🌸 نعتیں 🌸</h2>
+                <a href="naats.html?cat=naat" class="view-all">سب دیکھیں →</a>
+            </div>
+            <div class="horizontal-scroll">
                 <a href="naat1.html" class="naat-card">
                     <h3>نام محمد صلی اللہ علیہ وسلم</h3>
-                    <p>پہلا کلام... پہلی لائن یہاں دکھائی دے گی</p>
+                    <p>مکمل کلام... پہلی سطر</p>
                 </a>
                 <a href="naat2.html" class="naat-card">
                     <h3>مدینہ کے نواسے</h3>
-                    <p>دوسرا کلام... پہلی لائن یہاں دکھائی دے گی</p>
+                    <p>وہ جو مصطفیٰ کے نواسے ہیں...</p>
                 </a>
-                <!-- और नातें इसी तरह -->
+                <a href="naat3.html" class="naat-card">
+                    <h3>تاجدارِ مدینہ</h3>
+                    <p>تاجدارِ مدینہ صلی اللہ علیہ وسلم...</p>
+                </a>
             </div>
-        </main>
+        </div>
 
-        <!-- Bottom Navigation Bar (App-style) -->
-        <nav class="bottom-nav">
-            <a href="index.html" class="nav-item active">🏠 Home</a>
-            <a href="naats.html" class="nav-item">📖 Naats</a>
-            <a href="favorites.html" class="nav-item">⭐ Favorites</a>
-        </nav>
-    </div>
-    <script src="script.js"></script>
+        <!-- Category 2: Hamd -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2>🕌 حمد 🕌</h2>
+                <a href="naats.html?cat=hamd" class="view-all">سب دیکھیں →</a>
+            </div>
+            <div class="horizontal-scroll">
+                <a href="hamd1.html" class="naat-card">
+                    <h3>اللہ ہو اللہ ہو</h3>
+                    <p>بندہ تیرا ہوں، میں مسکین تیرا...</p>
+                </a>
+                <a href="hamd2.html" class="naat-card">
+                    <h3>رب ذوالجلال</h3>
+                    <p>تیری رحمت ہے جہاں کی زینت...</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Category 3: Manqabat -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2>⚔️ منقبتیں ⚔️</h2>
+                <a href="naats.html?cat=manqabat" class="view-all">سب دیکھیں →</a>
+            </div>
+            <div class="horizontal-scroll">
+                <a href="manqabat1.html" class="naat-card">
+                    <h3>شاہِ مردان حیدر کرار</h3>
+                    <p>شیرِ خدا، علمدارِ دین...</p>
+                </a>
+                <a href="manqabat2.html" class="naat-card">
+                    <h3>یا غوث اعظم</h3>
+                    <p>پناہِ غوث پناہِ دیں...</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Category 4: Salam -->
+        <div class="category-section">
+            <div class="category-header">
+                <h2>🌙 سلام 🌙</h2>
+                <a href="naats.html?cat=salam" class="view-all">سب دیکھیں →</a>
+            </div>
+            <div class="horizontal-scroll">
+                <a href="salam1.html" class="naat-card">
+                    <h3>سلام اے مصطفیٰ</h3>
+                    <p>جو آئے در پہ تیرے، وہ سلامت ہوگیا...</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">🏠 Home</a>
+        <a href="naats.html" class="nav-item">📖 Naats</a>
+        <a href="favorites.html" class="nav-item">⭐ Favorites</a>
+    </nav>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
