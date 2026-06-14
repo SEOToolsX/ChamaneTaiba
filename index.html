@@ -1,5 +1,46 @@
----
-layout: home
----
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ChamaneTaiba - Islamic Lyrics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <meta name="theme-color" content="#1a472a">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header / App Bar -->
+        <header>
+            <h1>چمنِ طیبہ</h1>
+            <div class="search-box">
+                <input type="search" placeholder="نعت / لفظ یہاں تلاش کریں...">
+            </div>
+        </header>
 
-<!-- Yahan kuch likhne ki zaroorat nahi, kyunki "home" layout already sab kuch dikha raha hai -->
+        <!-- Main Content -->
+        <main>
+            <div class="lyrics-list">
+                <a href="naat1.html" class="naat-card">
+                    <h3>نام محمد صلی اللہ علیہ وسلم</h3>
+                    <p>پہلا کلام... پہلی لائن یہاں دکھائی دے گی</p>
+                </a>
+                <a href="naat2.html" class="naat-card">
+                    <h3>مدینہ کے نواسے</h3>
+                    <p>دوسرا کلام... پہلی لائن یہاں دکھائی دے گی</p>
+                </a>
+                <!-- और नातें इसी तरह -->
+            </div>
+        </main>
+
+        <!-- Bottom Navigation Bar (App-style) -->
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active">🏠 Home</a>
+            <a href="naats.html" class="nav-item">📖 Naats</a>
+            <a href="favorites.html" class="nav-item">⭐ Favorites</a>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
