@@ -124,3 +124,67 @@ header h1 {
     font-size: 1.2rem;
     line-height: 2;
 }
+
+/* Categories Layout */
+.category-section {
+    margin-top: 24px;
+    padding: 0 0 8px 0;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 16px 8px 16px;
+    border-bottom: 2px solid #e8dcc8;
+}
+
+.category-header h2 {
+    font-size: 1.25rem;
+    color: #1a472a;
+    margin: 0;
+}
+
+.view-all {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #b8860b;
+    font-weight: 500;
+}
+
+/* Horizontal Scroll (अब एप्लिकेशन जैसा लुक) */
+.horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 8px 16px 16px 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.horizontal-scroll .naat-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+    margin: 0;
+    background: #fffaf2;
+    border-radius: 24px;
+    padding: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-right: none;
+    border-left: 3px solid #1a472a;
+}
+
+.horizontal-scroll .naat-card:active {
+    transform: scale(0.97);
+}
+
+/* Search results highlight */
+.search-highlight {
+    background-color: #fff3cd;
+    transition: all 0.2s;
+}
+
+/* Fix for bottom nav overlapping */
+main {
+    padding-bottom: 70px;
+}
