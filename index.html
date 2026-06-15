@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ChamaneTaiba | اسلامی کلام</title>
-    <!-- Font Awesome Icons (Optional but nice) -->
+    <title>ChamaneTaiba - اسلامی کلام</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Font for Urdu (Noto Nastaliq Urdu) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -19,35 +17,33 @@
             font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
             background: linear-gradient(145deg, #fef9e6 0%, #fff4e0 100%);
             color: #2c2b28;
-            padding: 1rem;
+            padding: 0;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* App container */
-        .app-container {
+        /* Main content area - will push footer down if content is short */
+        .main-content {
+            flex: 1;
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(255, 255, 245, 0.9);
-            border-radius: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            backdrop-filter: blur(2px);
-            transition: all 0.2s ease;
+            width: 100%;
+            padding: 1rem 1rem 5rem 1rem;  /* bottom padding so content doesn't hide behind footer */
         }
 
         /* Header */
         .header {
             background: linear-gradient(135deg, #1f5e2d, #0c3e1f);
-            padding: 1.8rem 1.5rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             color: #ffefcf;
-            border-bottom-left-radius: 2rem;
-            border-bottom-right-radius: 2rem;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         .header h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 1.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -55,127 +51,37 @@
             flex-wrap: wrap;
         }
         .header h1 i {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: #ffdd99;
         }
         .header p {
-            font-size: 1rem;
-            margin-top: 8px;
+            font-size: 0.9rem;
+            margin-top: 6px;
             opacity: 0.9;
-            font-weight: 400;
         }
 
-        /* Main content padding */
-        .main-content {
-            padding: 1.5rem;
-        }
-
-        /* Section titles */
+        /* Section title */
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: #2b5e2f;
-            border-right: 5px solid #2b5e2f;
-            padding-right: 12px;
+            border-right: 4px solid #2b5e2f;
+            padding-right: 10px;
             margin: 1rem 0 0.8rem 0;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .section-title i {
-            font-size: 1.2rem;
-            color: #f39c12;
-        }
-
-        /* Categories Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .category-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 0.8rem 0.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            border: 1px solid #e9e0ce;
-        }
-        .category-card i {
-            font-size: 2rem;
-            color: #3b8c41;
-            display: block;
-            margin-bottom: 8px;
-        }
-        .category-card span {
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: block;
-        }
-        .category-card .count-badge {
-            font-size: 0.75rem;
-            background: #eef2e6;
-            display: inline-block;
-            padding: 2px 10px;
-            border-radius: 30px;
-            margin-top: 6px;
-            color: #2c6e2f;
-        }
-        .category-card.active {
-            background: #2b5e2f;
-            color: white;
-            border-color: #1f4a23;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 18px -8px rgba(0,0,0,0.2);
-        }
-        .category-card.active i,
-        .category-card.active .count-badge {
-            color: white;
-            background: #477a4b;
-        }
-
-        /* Tabs row (secondary navigation) */
-        .tabs-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0 1rem 0;
-            border-bottom: 1px solid #e2dccf;
-            padding-bottom: 0.75rem;
-        }
-        .tab-btn {
-            background: transparent;
-            border: none;
-            font-family: inherit;
-            font-size: 1rem;
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: 0.2s;
-            font-weight: 500;
-            color: #4a5b3e;
-        }
-        .tab-btn.active {
-            background: #2b5e2f;
-            color: white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        .tab-btn:hover:not(.active) {
-            background: #e2e5d5;
-        }
 
         /* Search box */
         .search-box {
-            margin: 1rem 0 1rem 0;
             display: flex;
             align-items: center;
             background: white;
             border-radius: 60px;
             padding: 0.3rem 1rem;
             border: 1px solid #ddd2bc;
+            margin-bottom: 1rem;
         }
         .search-box i {
             color: #b87c2e;
@@ -193,19 +99,21 @@
 
         /* Lyrics list */
         .lyrics-list {
-            margin: 1.2rem 0;
             display: flex;
             flex-direction: column;
             gap: 0.7rem;
+            margin-bottom: 1rem;
         }
         .lyric-item {
             background: white;
             border-radius: 1.2rem;
             padding: 0.9rem 1.2rem;
-            cursor: pointer;
             transition: 0.15s;
             border-right: 4px solid #c2aa7a;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            text-decoration: none;
+            display: block;
+            color: #2c2b28;
         }
         .lyric-item:hover {
             background: #fff7ea;
@@ -223,299 +131,215 @@
             font-size: 0.9rem;
         }
 
-        /* Display area for full lyrics */
-        .lyrics-display {
-            background: #fef9e8;
-            border-radius: 1.5rem;
-            padding: 1.3rem;
-            margin-top: 1rem;
-            border: 1px solid #eedebf;
-            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02), 0 5px 12px rgba(0,0,0,0.05);
-        }
-        .display-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #2b5e2f;
-            border-bottom: 2px dashed #e2cfaa;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        .display-text {
-            font-size: 1.1rem;
-            line-height: 2rem;
-            white-space: pre-wrap;
-            word-break: break-word;
-            color: #2f2e2a;
-        }
+        /* Empty message */
         .empty-msg {
             text-align: center;
             padding: 2rem;
             color: #8f7a56;
             font-size: 1rem;
         }
-        footer {
-            text-align: center;
-            padding: 1.2rem;
-            font-size: 0.8rem;
-            color: #ae9f83;
-            border-top: 1px solid #f0e4d0;
-            margin-top: 1rem;
+
+        /* ========== STICKY FOOTER TABS ========== */
+        .tabs-footer {
+            position: sticky;
+            bottom: 0;
+            background: rgba(255, 248, 235, 0.96);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid #e9dfce;
+            padding: 0.6rem 0.8rem;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+            z-index: 100;
+            width: 100%;
         }
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #4a5b3e;
+            transition: 0.2s;
+            flex: 1 0 auto;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .tab-btn.active {
+            background: #2b5e2f;
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .tab-btn:hover:not(.active) {
+            background: #e2e5d5;
+        }
+
+        /* Responsive: allow tabs to wrap nicely */
         @media (max-width: 550px) {
-            .cards-grid { grid-template-columns: repeat(2, 1fr); }
-            .header h1 { font-size: 1.7rem; }
-            .display-text { font-size: 1rem; line-height: 1.8rem; }
+            .tab-btn {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.7rem;
+            }
+            .header h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
-<div class="app-container">
-    <div class="header">
-        <h1><i class="fas fa-leaf"></i> چمنِ طیبہ <i class="fas fa-mosque"></i></h1>
-        <p>نعت، حمد اور منقبت کا خوشنما مجموعہ</p>
-    </div>
     <div class="main-content">
-        <!-- Categories Cards Section -->
-        <div class="section-title">
-            <i class="fas fa-th-large"></i>
-            <span>اقسام / Categories</span>
-        </div>
-        <div id="categoriesCardsContainer" class="cards-grid">
-            <!-- dynamic cards from JSON -->
+        <div class="header">
+            <h1><i class="fas fa-leaf"></i> چمنِ طیبہ <i class="fas fa-mosque"></i></h1>
+            <p>نعت، حمد اور منقبت کا خوشنما مجموعہ</p>
         </div>
 
-        <!-- Tabs (alternative category selector) -->
         <div class="section-title">
-            <i class="fas fa-tab"></i>
-            <span>ٹیبز / Tabs</span>
+            <i class="fas fa-search"></i>
+            <span>تلاش کریں</span>
         </div>
-        <div id="tabsContainer" class="tabs-row">
-            <!-- dynamic tab buttons -->
-        </div>
-
-        <!-- Search -->
         <div class="search-box">
             <i class="fas fa-search"></i>
             <input type="text" id="searchInput" placeholder="عنوان سے تلاش کریں... (مثال: آقا)">
         </div>
 
-        <!-- Lyrics List Header -->
         <div class="section-title">
             <i class="fas fa-list-ul"></i>
             <span>کلام کی فہرست</span>
         </div>
         <div id="lyricsListContainer" class="lyrics-list">
-            <!-- lyrics items loaded here -->
-        </div>
-
-        <!-- Lyrics Full Display Area -->
-        <div id="lyricsDisplay" class="lyrics-display">
-            <div class="empty-msg">
-                <i class="fas fa-hand-point-left"></i> کسی بھی کلام پر کلک کریں، مکمل متن یہاں ظاہر ہوگا
-            </div>
+            <!-- loading / dynamic content -->
+            <div class="empty-msg">لوڈ ہو رہا ہے...</div>
         </div>
     </div>
-    <footer>
-        <i class="fas fa-heart" style="color:#be8a3a;"></i> چمنِ طیبہ — روحانی فیض
-    </footer>
-</div>
 
-<script>
-    // ------------------- Global Variables -------------------
-    let appData = { categories: [], lyrics: [] };
-    let activeCategoryId = null;
-    let currentLyricsList = [];    // filtered (by category + search)
-    let selectedLyricObj = null;
+    <!-- Sticky Footer Tabs -->
+    <div class="tabs-footer">
+        <div id="tabsContainer" class="tabs-container">
+            <!-- tabs will be injected here -->
+        </div>
+    </div>
 
-    // DOM elements
-    const cardsContainer = document.getElementById('categoriesCardsContainer');
-    const tabsContainer = document.getElementById('tabsContainer');
-    const lyricsListDiv = document.getElementById('lyricsListContainer');
-    const lyricsDisplayDiv = document.getElementById('lyricsDisplay');
-    const searchInput = document.getElementById('searchInput');
+    <script>
+        // Global variables
+        let appData = { categories: [], lyrics: [] };
+        let activeCategoryId = null;
 
-    // ------------------- Load JSON -------------------
-    async function loadData() {
-        try {
-            const response = await fetch('lyrics.json');
-            if (!response.ok) throw new Error('JSON load failed');
-            const data = await response.json();
-            appData = data;
-            // derive active category: first category id
-            if (appData.categories.length > 0) {
-                activeCategoryId = appData.categories[0].id;
+        // DOM elements
+        const lyricsListDiv = document.getElementById('lyricsListContainer');
+        const tabsContainer = document.getElementById('tabsContainer');
+        const searchInput = document.getElementById('searchInput');
+
+        // Load JSON
+        async function loadData() {
+            try {
+                const response = await fetch('lyrics.json');
+                if (!response.ok) throw new Error('JSON not found');
+                const data = await response.json();
+                appData = data;
+                // Count lyrics per category
+                updateCategoryCounts();
+                // Set initial category from URL param ?cat=... or first category
+                const urlParams = new URLSearchParams(window.location.search);
+                const catParam = urlParams.get('cat');
+                if (catParam && appData.categories.some(c => c.id === catParam)) {
+                    activeCategoryId = catParam;
+                } else if (appData.categories.length > 0) {
+                    activeCategoryId = appData.categories[0].id;
+                }
+                renderTabs();
+                renderLyricsList();
+            } catch (err) {
+                console.error(err);
+                lyricsListDiv.innerHTML = `<div class="empty-msg">❌ lyrics.json لوڈ نہیں ہو سکا۔ فائل چیک کریں۔</div>`;
             }
-            // recalc counts per category based on actual lyrics
-            updateCategoryCounts();
-            renderAll();
-        } catch (err) {
-            console.error(err);
-            lyricsDisplayDiv.innerHTML = `<div class="empty-msg"><i class="fas fa-exclamation-triangle"></i> ڈیٹا لوڈ نہیں ہوسکا۔ lyrics.json چیک کریں۔</div>`;
         }
-    }
 
-    // Count real lyrics per category
-    function updateCategoryCounts() {
-        if (!appData.categories || !appData.lyrics) return;
-        appData.categories = appData.categories.map(cat => {
-            const count = appData.lyrics.filter(lyric => lyric.categoryId === cat.id).length;
-            return { ...cat, count };
-        });
-    }
-
-    // Filter lyrics by activeCategory + search term
-    function getFilteredLyrics() {
-        let filtered = appData.lyrics.filter(lyric => lyric.categoryId === activeCategoryId);
-        const searchTerm = searchInput.value.trim().toLowerCase();
-        if (searchTerm) {
-            filtered = filtered.filter(lyric => lyric.title.toLowerCase().includes(searchTerm));
+        function updateCategoryCounts() {
+            appData.categories = appData.categories.map(cat => ({
+                ...cat,
+                count: appData.lyrics.filter(l => l.categoryId === cat.id).length
+            }));
         }
-        return filtered;
-    }
 
-    // Render category cards, tabs, and refresh lyrics list
-    function renderAll() {
-        renderCategoriesCards();
-        renderTabs();
-        renderLyricsList();
-    }
-
-    // Cards view
-    function renderCategoriesCards() {
-        if (!appData.categories.length) {
-            cardsContainer.innerHTML = '<div class="empty-msg">کوئی قسم موجود نہیں</div>';
-            return;
-        }
-        cardsContainer.innerHTML = appData.categories.map(cat => `
-            <div class="category-card ${activeCategoryId === cat.id ? 'active' : ''}" data-cat-id="${cat.id}">
-                <i class="fas ${getIconForCategory(cat.id)}"></i>
-                <span>${cat.name}</span>
-                <div class="count-badge">${cat.count || 0} کلام</div>
-            </div>
-        `).join('');
-        // attach event listeners
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                const catId = card.dataset.catId;
-                if (activeCategoryId !== catId) {
-                    activeCategoryId = catId;
-                    searchInput.value = '';   // reset search on category change
-                    renderAll();
-                }
-            });
-        });
-    }
-
-    // Tabs view
-    function renderTabs() {
-        if (!appData.categories.length) {
-            tabsContainer.innerHTML = '';
-            return;
-        }
-        tabsContainer.innerHTML = appData.categories.map(cat => `
-            <button class="tab-btn ${activeCategoryId === cat.id ? 'active' : ''}" data-tab-id="${cat.id}">
-                ${cat.name} (${cat.count || 0})
-            </button>
-        `).join('');
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const tabId = btn.dataset.tabId;
-                if (activeCategoryId !== tabId) {
-                    activeCategoryId = tabId;
-                    searchInput.value = '';
-                    renderAll();
-                }
-            });
-        });
-    }
-
-    // Render lyrics list (from filtered)
-    function renderLyricsList() {
-        const filtered = getFilteredLyrics();
-        currentLyricsList = filtered;
-        if (!filtered.length) {
-            lyricsListDiv.innerHTML = `<div class="empty-msg">اس قسم میں کوئی کلام نہیں یا تلاش کا کوئی نتیجہ نہیں</div>`;
-            // clear display if needed
-            if (!selectedLyricObj || !filtered.some(l => l.id === selectedLyricObj?.id)) {
-                lyricsDisplayDiv.innerHTML = `<div class="empty-msg"><i class="fas fa-feather-alt"></i> کلام منتخب کریں</div>`;
-                selectedLyricObj = null;
+        // Filter lyrics by active category + search term
+        function getFilteredLyrics() {
+            let filtered = appData.lyrics.filter(l => l.categoryId === activeCategoryId);
+            const term = searchInput.value.trim().toLowerCase();
+            if (term) {
+                filtered = filtered.filter(l => l.title.toLowerCase().includes(term));
             }
-            return;
+            return filtered;
         }
-        lyricsListDiv.innerHTML = filtered.map(lyric => `
-            <div class="lyric-item" data-lyric-id="${lyric.id}">
-                <div class="lyric-title">
-                    <span>${lyric.title}</span>
-                    <i class="fas fa-microphone-alt"></i>
-                </div>
-            </div>
-        `).join('');
-        // attach click to each lyric
-        document.querySelectorAll('.lyric-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const lyricId = parseInt(item.dataset.lyricId);
-                const found = appData.lyrics.find(l => l.id === lyricId);
-                if (found) {
-                    selectedLyricObj = found;
-                    displayFullLyrics(found);
-                }
+
+        // Render tabs in footer
+        function renderTabs() {
+            if (!appData.categories.length) {
+                tabsContainer.innerHTML = '<div class="empty-msg">کوئی قسم نہیں</div>';
+                return;
+            }
+            tabsContainer.innerHTML = appData.categories.map(cat => `
+                <button class="tab-btn ${activeCategoryId === cat.id ? 'active' : ''}" data-cat-id="${cat.id}">
+                    ${cat.name} (${cat.count || 0})
+                </button>
+            `).join('');
+
+            // attach click events
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const catId = btn.dataset.catId;
+                    if (activeCategoryId !== catId) {
+                        activeCategoryId = catId;
+                        // Update URL param without reload
+                        const url = new URL(window.location);
+                        url.searchParams.set('cat', catId);
+                        window.history.pushState({}, '', url);
+                        // Reset search input
+                        searchInput.value = '';
+                        renderTabs();
+                        renderLyricsList();
+                    }
+                });
             });
-        });
-        // if previously selected lyric still exists in current filtered, show it again
-        if (selectedLyricObj && filtered.some(l => l.id === selectedLyricObj.id)) {
-            displayFullLyrics(selectedLyricObj);
-        } else if (filtered.length > 0 && !selectedLyricObj) {
-            // optionally auto select first? not to annoy, but keep placeholder
-            // But we keep existing display if empty, else show first? better not auto.
-        } else if (filtered.length > 0 && (!selectedLyricObj || !filtered.some(l => l.id === selectedLyricObj.id))) {
-            // previous selected not in current => clear display
-            lyricsDisplayDiv.innerHTML = `<div class="empty-msg"><i class="fas fa-book-open"></i> نیا کلام منتخب کریں</div>`;
-            selectedLyricObj = null;
         }
-    }
 
-    function displayFullLyrics(lyric) {
-        if (!lyric) return;
-        const formattedText = lyric.text.replace(/\n/g, '<br>');
-        lyricsDisplayDiv.innerHTML = `
-            <div>
-                <div class="display-title">
-                    <i class="fas fa-star-of-life"></i> ${lyric.title}
-                </div>
-                <div class="display-text">
-                    ${formattedText}
-                </div>
-            </div>
-        `;
-        // smoothly scroll to display area
-        lyricsDisplayDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+        // Render lyrics list as clickable links to lyric.html?id=...
+        function renderLyricsList() {
+            const filtered = getFilteredLyrics();
+            if (!filtered.length) {
+                lyricsListDiv.innerHTML = `<div class="empty-msg">❌ اس قسم میں کوئی کلام نہیں یا تلاش کا کوئی نتیجہ نہیں</div>`;
+                return;
+            }
+            lyricsListDiv.innerHTML = filtered.map(lyric => `
+                <a href="lyric.html?id=${lyric.id}" class="lyric-item">
+                    <div class="lyric-title">
+                        <span>${lyric.title}</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                </a>
+            `).join('');
+        }
 
-    // Search event listener
-    function bindSearchEvents() {
-        searchInput.addEventListener('input', () => {
-            renderLyricsList();   // re-filter within same category
-        });
-    }
+        // Search event
+        function bindSearch() {
+            searchInput.addEventListener('input', () => {
+                renderLyricsList();
+            });
+        }
 
-    // Helper icons
-    function getIconForCategory(catId) {
-        const icons = {
-            'naat': 'fa-pray',
-            'hamd': 'fa-hand-peace',
-            'manqabat': 'fa-crown'
-        };
-        return icons[catId] || 'fa-leaf';
-    }
-
-    // Initialize App
-    function init() {
-        loadData().then(() => {
-            bindSearchEvents();
-        });
-    }
-    init();
-</script>
+        // Initialize
+        function init() {
+            loadData().then(() => {
+                bindSearch();
+            });
+        }
+        init();
+    </script>
 </body>
 </html>
