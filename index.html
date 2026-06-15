@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>ChamaneTaiba - Islamic Lyrics</title>
-    <!-- Google Fonts: Noto Nastaliq Urdu + Sans for UI -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,45 +13,48 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        body {
+        html, body {
+            height: 100%;
             background: #f5f2e8;
+        }
+
+        body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Full screen app - no max-width restriction */
+        /* Main App - Full height, no overflow issues */
         .app {
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            height: 100dvh;  /* dynamic viewport height, solves mobile bottom bar issue */
             width: 100%;
             background: #ffffff;
             overflow: hidden;
         }
 
-        /* Header */
+        /* Header fixed top */
         .header {
             background: #2c6e52;
             color: white;
-            padding: 20px 20px 14px;
+            padding: 18px 20px 12px;
             text-align: center;
             flex-shrink: 0;
         }
         .header h1 {
-            font-size: 2rem;
+            font-size: 1.9rem;
             font-weight: 600;
             font-family: 'Inter', sans-serif;
-            letter-spacing: -0.3px;
         }
         .header p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             opacity: 0.9;
-            margin-top: 6px;
+            margin-top: 4px;
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Scrollable content */
+        /* Scrollable content - takes remaining space */
         .content {
             flex: 1;
             overflow-y: auto;
@@ -60,12 +62,12 @@
             background: #fffef7;
         }
 
-        /* Bottom Tabs */
+        /* Bottom Tabs - Fixed at bottom */
         .bottom-tabs {
             display: flex;
             background: #ffffff;
             border-top: 1px solid #e2e0d4;
-            padding: 8px 12px 14px;
+            padding: 8px 12px 12px;
             justify-content: space-around;
             flex-shrink: 0;
         }
@@ -81,6 +83,7 @@
             color: #6b6b5e;
             transition: all 0.2s;
             font-weight: 500;
+            font-family: 'Inter', sans-serif;
         }
         .tab i {
             font-size: 1.5rem;
@@ -89,6 +92,16 @@
         .tab.active {
             background: #eef4f0;
             color: #2c6e52;
+        }
+
+        /* Force Urdu font on all Arabic/Urdu text elements */
+        .cat-card, .list-item, .detail-title, .lyrics-text, .loading, .no-data, .small-text, .btn, .search-input {
+            font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
+        }
+
+        /* For UI text (non-Urdu) we keep Inter, but Urdu titles also get Noto */
+        .header h1, .header p, .tab span {
+            font-family: 'Inter', sans-serif;
         }
 
         /* Categories Grid */
@@ -109,7 +122,6 @@
             transition: 0.15s;
             border: 1px solid #dad7c7;
             color: #2c5a48;
-            font-family: 'Inter', sans-serif;
         }
         .cat-card:active {
             background: #e0e6de;
@@ -127,7 +139,6 @@
             font-weight: 500;
             transition: 0.1s;
             color: #2d3e35;
-            font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
             font-size: 1.05rem;
         }
         .list-item:active {
@@ -149,10 +160,8 @@
             padding-bottom: 12px;
             margin-bottom: 20px;
             color: #2c6e52;
-            font-family: 'Noto Nastaliq Urdu', serif;
         }
         .lyrics-text {
-            font-family: 'Noto Nastaliq Urdu', serif;
             font-size: 1.2rem;
             line-height: 1.9;
             white-space: pre-wrap;
@@ -173,7 +182,6 @@
             display: inline-flex;
             gap: 8px;
             font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
         }
         .btn-outline {
             background: transparent;
@@ -189,13 +197,11 @@
             font-size: 1rem;
             text-align: right;
             margin-bottom: 20px;
-            font-family: 'Inter', sans-serif;
         }
         .loading, .no-data {
             text-align: center;
             padding: 40px;
             color: #8b8a7a;
-            font-family: 'Inter', sans-serif;
         }
         .flex-btns {
             display: flex;
@@ -205,7 +211,6 @@
         .small-text {
             font-size: 0.7rem;
             opacity: 0.7;
-            font-family: 'Inter', sans-serif;
         }
 
         /* Scrollbar */
@@ -220,20 +225,19 @@
             border-radius: 10px;
         }
 
-        /* Desktop optimization */
+        /* Desktop styling */
         @media (min-width: 768px) {
+            body {
+                justify-content: center;
+                align-items: center;
+                background: #e8e5da;
+            }
             .app {
                 max-width: 550px;
-                margin: 0 auto;
                 height: 95vh;
                 border-radius: 32px;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-                margin-top: 20px;
-            }
-            body {
-                background: #e8e5da;
-                justify-content: center;
-                align-items: center;
+                margin: 20px auto;
             }
         }
     </style>
@@ -258,7 +262,6 @@
 </div>
 
 <script>
-    // ---------- DATA ----------
     let allLyrics = [];
     let favorites = JSON.parse(localStorage.getItem('chamane_fav') || '[]');
     let currentTab = 'home';
@@ -268,9 +271,7 @@
     const contentDiv = document.getElementById('contentArea');
     const tabs = document.querySelectorAll('.tab');
 
-    function saveFav() {
-        localStorage.setItem('chamane_fav', JSON.stringify(favorites));
-    }
+    function saveFav() { localStorage.setItem('chamane_fav', JSON.stringify(favorites)); }
     function isFav(id) { return favorites.includes(id); }
     function toggleFav(id) {
         if (isFav(id)) favorites = favorites.filter(f => f !== id);
@@ -321,7 +322,7 @@
             document.getElementById('backHome')?.addEventListener('click', () => { currentTab = 'home'; renderCurrent(); highlightTab('home'); });
             return;
         }
-        let html = `<strong style="display:block; margin-bottom:12px; font-family:'Inter';">📂 ${escapeHtml(category)}</strong><div>`;
+        let html = `<strong style="display:block; margin-bottom:12px;">📂 ${escapeHtml(category)}</strong><div>`;
         filtered.forEach(l => { html += `<div class="list-item" data-id="${l.id}">🎵 ${escapeHtml(l.title)}</div>`; });
         html += `</div><button class="btn" id="backFromCat">🔙 واپس زمرے</button>`;
         contentDiv.innerHTML = html;
