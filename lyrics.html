@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ChamaneTaiba - Lyrics</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#1a472a">
+    <style>
+        .lyrics-header { background: linear-gradient(135deg, #0d2818, #1a472a); padding: 20px 16px; color: white; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 10; }
+        .back-btn, .home-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 12px; border-radius: 40px; font-size: 0.9rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .lyrics-title { flex: 1; text-align: center; font-size: 1.3rem; font-weight: 600; margin: 0; }
+        .favorite-btn { background: none; border: none; font-size: 1.8rem; cursor: pointer; padding: 0 8px; }
+        .favorite-btn.active-fav { color: gold; text-shadow: 0 0 5px goldenrod; }
+        .lyrics-container { padding: 20px 20px 90px; direction: rtl; text-align: right; font-family: 'Noto Nastaliq Urdu', serif; font-size: 1.35rem; line-height: 2.2; background: #fffef7; min-height: 80vh; }
+        .verse { margin-bottom: 20px; padding: 8px 0; border-bottom: 1px dashed #e0d6c0; }
+        @media (max-width:480px){ .lyrics-container{ font-size:1.2rem; } }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <div class="lyrics-header">
+        <a href="index.html" class="home-btn">🏠 Home</a>
+        <button class="back-btn" onclick="window.history.back()">🔙 واپس</button>
+        <div class="lyrics-title" id="lyricsTitle">🌹 نام محمد ﷺ 🌹</div>
+        <button class="favorite-btn" id="favBtn">🤍</button>
+    </div>
+    <div class="lyrics-container" id="lyricsContainer">
+        <!-- Lyrics will be loaded here -->
+    </div>
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">🏠 Home</a>
+        <a href="naats.html" class="nav-item">📖 Naats</a>
+        <a href="favorites.html" class="nav-item">⭐ Favorites</a>
+    </nav>
+</div>
+<script src="data.js"></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const naatId = urlParams.get('id');
+    const naat = allNaats.find(n => n.id === naatId);
+    if (naat) {
+        document.getElementById('lyricsTitle').innerHTML = `🌹 ${naat.title} 🌹`;
+        document.getElementById('lyricsContainer').innerHTML = naat.lyrics;
+        document.getElementById('favBtn').setAttribute('data-id', naat.id);
+    } else {
+        document.getElementById('lyricsContainer').innerHTML = '<div style="text-align:center;">❌ نعت نہیں ملی</div>';
+    }
+    // Favorite logic
+    const favBtn = document.getElementById('favBtn');
+    function updateFavButton() {
+        let favs = JSON.parse(localStorage.getItem('chamanetaiba_favorites') || '[]');
+        if (favs.includes(naat.id)) {
+            favBtn.innerHTML = '❤️';
+            favBtn.classList.add('active-fav');
+        } else {
+            favBtn.innerHTML = '🤍';
+            favBtn.classList.remove('active-fav');
+        }
+    }
+    function toggleFavorite() {
+        let favs = JSON.parse(localStorage.getItem('chamanetaiba_favorites') || '[]');
+        if (favs.includes(naat.id)) {
+            favs = favs.filter(id => id !== naat.id);
+        } else {
+            favs.push(naat.id);
+        }
+        localStorage.setItem('chamanetaiba_favorites', JSON.stringify(favs));
+        updateFavButton();
+    }
+    if (naat) {
+        favBtn.addEventListener('click', toggleFavorite);
+        updateFavButton();
+    }
+</script>
+</body>
+</html>
