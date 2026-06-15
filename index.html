@@ -2,444 +2,520 @@
 <html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>ChamaneTaiba - Islamic Lyrics</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ChamaneTaiba | اسلامی کلام</title>
+    <!-- Font Awesome Icons (Optional but nice) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font for Urdu (Noto Nastaliq Urdu) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: #f5f2e8;
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            background: linear-gradient(145deg, #fef9e6 0%, #fff4e0 100%);
+            color: #2c2b28;
+            padding: 1rem;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Full screen app - use dvh for modern mobile */
-        .app {
-            display: flex;
-            flex-direction: column;
-            height: 100dvh;
-            width: 100%;
-            background: #ffffff;
+        /* App container */
+        .app-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 245, 0.9);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
             overflow: hidden;
+            backdrop-filter: blur(2px);
+            transition: all 0.2s ease;
         }
 
-        /* Header - fixed top */
+        /* Header */
         .header {
-            background: #2c6e52;
-            color: white;
-            padding: 20px 20px 14px;
+            background: linear-gradient(135deg, #1f5e2d, #0c3e1f);
+            padding: 1.8rem 1.5rem;
             text-align: center;
-            flex-shrink: 0;
+            color: #ffefcf;
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
         }
         .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .header h1 i {
             font-size: 2rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: -0.3px;
+            color: #ffdd99;
         }
         .header p {
-            font-size: 0.85rem;
+            font-size: 1rem;
+            margin-top: 8px;
             opacity: 0.9;
-            margin-top: 6px;
-            font-family: 'Inter', sans-serif;
+            font-weight: 400;
         }
 
-        /* Scrollable content - takes remaining space */
-        .content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px 18px;
-            background: #fffef7;
+        /* Main content padding */
+        .main-content {
+            padding: 1.5rem;
         }
 
-        /* Bottom tabs - fixed at bottom */
-        .bottom-tabs {
+        /* Section titles */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2b5e2f;
+            border-right: 5px solid #2b5e2f;
+            padding-right: 12px;
+            margin: 1rem 0 0.8rem 0;
             display: flex;
-            background: #ffffff;
-            border-top: 1px solid #e2e0d4;
-            padding: 8px 12px 14px;
-            justify-content: space-around;
-            flex-shrink: 0;
-        }
-        .tab {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 4px;
-            cursor: pointer;
-            padding: 6px 12px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            color: #6b6b5e;
-            transition: all 0.2s;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
+            gap: 8px;
         }
-        .tab i {
-            font-size: 1.5rem;
-            font-style: normal;
-        }
-        .tab.active {
-            background: #eef4f0;
-            color: #2c6e52;
+        .section-title i {
+            font-size: 1.2rem;
+            color: #f39c12;
         }
 
-        /* Categories Grid */
-        .grid-cats {
+        /* Categories Cards Grid */
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 14px;
-            margin-top: 8px;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
-        .cat-card {
-            background: #f0f2ed;
-            padding: 16px 10px;
+        .category-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 0.8rem 0.5rem;
             text-align: center;
-            border-radius: 28px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e9e0ce;
+        }
+        .category-card i {
+            font-size: 2rem;
+            color: #3b8c41;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .category-card span {
+            font-size: 1.2rem;
             font-weight: 600;
-            font-size: 1.15rem;
+            display: block;
+        }
+        .category-card .count-badge {
+            font-size: 0.75rem;
+            background: #eef2e6;
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 30px;
+            margin-top: 6px;
+            color: #2c6e2f;
+        }
+        .category-card.active {
+            background: #2b5e2f;
+            color: white;
+            border-color: #1f4a23;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 18px -8px rgba(0,0,0,0.2);
+        }
+        .category-card.active i,
+        .category-card.active .count-badge {
+            color: white;
+            background: #477a4b;
+        }
+
+        /* Tabs row (secondary navigation) */
+        .tabs-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1rem 0;
+            border-bottom: 1px solid #e2dccf;
+            padding-bottom: 0.75rem;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 500;
+            color: #4a5b3e;
+        }
+        .tab-btn.active {
+            background: #2b5e2f;
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .tab-btn:hover:not(.active) {
+            background: #e2e5d5;
+        }
+
+        /* Search box */
+        .search-box {
+            margin: 1rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 60px;
+            padding: 0.3rem 1rem;
+            border: 1px solid #ddd2bc;
+        }
+        .search-box i {
+            color: #b87c2e;
+            margin-left: 8px;
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 12px 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+        }
+
+        /* Lyrics list */
+        .lyrics-list {
+            margin: 1.2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .lyric-item {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 0.9rem 1.2rem;
             cursor: pointer;
             transition: 0.15s;
-            border: 1px solid #dad7c7;
-            color: #2c5a48;
-            /* Urdu font for category names */
-            font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
+            border-right: 4px solid #c2aa7a;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        .cat-card:active {
-            background: #e0e6de;
-            transform: scale(0.97);
+        .lyric-item:hover {
+            background: #fff7ea;
+            transform: translateX(-3px);
         }
-
-        /* Lyrics List Items */
-        .list-item {
-            background: #faf8f0;
-            padding: 14px 18px;
-            margin-bottom: 12px;
-            border-radius: 60px;
-            border-right: 4px solid #2c6e52;
-            cursor: pointer;
-            font-weight: 500;
-            transition: 0.1s;
-            color: #2d3e35;
-            font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
-            font-size: 1.05rem;
-        }
-        .list-item:active {
-            background: #e9ece2;
-        }
-
-        /* Detail View */
-        .detail-card {
-            background: #fefcf5;
-            border-radius: 28px;
-            padding: 18px;
-            border: 1px solid #e2dfcf;
-        }
-        .detail-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-align: center;
-            border-bottom: 2px solid #cbd5c1;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            color: #2c6e52;
-            font-family: 'Noto Nastaliq Urdu', serif;
-        }
-        .lyrics-text {
-            font-family: 'Noto Nastaliq Urdu', serif;
+        .lyric-title {
             font-size: 1.2rem;
-            line-height: 1.9;
-            white-space: pre-wrap;
-            background: #fefcf5;
-            padding: 12px;
-            text-align: right;
-            color: #2c3e2f;
-        }
-        .btn {
-            background: #2c6e52;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 60px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 16px;
-            display: inline-flex;
-            gap: 8px;
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #2c6e52;
-            color: #2c6e52;
-        }
-        .search-input {
-            width: 100%;
-            padding: 14px 18px;
-            border-radius: 60px;
-            border: 1px solid #ddd8c6;
-            background: white;
-            font-size: 1rem;
-            text-align: right;
-            margin-bottom: 20px;
-            font-family: 'Inter', sans-serif;
-        }
-        .loading, .no-data {
-            text-align: center;
-            padding: 40px;
-            color: #8b8a7a;
-            font-family: 'Inter', sans-serif;
-        }
-        .flex-btns {
+            font-weight: 600;
             display: flex;
-            gap: 12px;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
         }
-        .small-text {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            font-family: 'Inter', sans-serif;
-        }
-        /* For category heading */
-        .cat-heading {
-            display: block;
-            margin-bottom: 12px;
-            font-family: 'Noto Nastaliq Urdu', serif;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2c6e52;
+        .lyric-title i {
+            color: #b97f2e;
+            font-size: 0.9rem;
         }
 
-        /* Scrollbar */
-        .content::-webkit-scrollbar {
-            width: 4px;
+        /* Display area for full lyrics */
+        .lyrics-display {
+            background: #fef9e8;
+            border-radius: 1.5rem;
+            padding: 1.3rem;
+            margin-top: 1rem;
+            border: 1px solid #eedebf;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02), 0 5px 12px rgba(0,0,0,0.05);
         }
-        .content::-webkit-scrollbar-track {
-            background: #ece8dc;
+        .display-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2b5e2f;
+            border-bottom: 2px dashed #e2cfaa;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            display: inline-block;
         }
-        .content::-webkit-scrollbar-thumb {
-            background: #b9b3a0;
-            border-radius: 10px;
+        .display-text {
+            font-size: 1.1rem;
+            line-height: 2rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: #2f2e2a;
         }
-
-        /* Desktop optimization - keeps app centered */
-        @media (min-width: 768px) {
-            .app {
-                max-width: 550px;
-                margin: 0 auto;
-                height: 95dvh;
-                border-radius: 32px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-                margin-top: 20px;
-            }
-            body {
-                background: #e8e5da;
-                justify-content: center;
-                align-items: center;
-            }
+        .empty-msg {
+            text-align: center;
+            padding: 2rem;
+            color: #8f7a56;
+            font-size: 1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.8rem;
+            color: #ae9f83;
+            border-top: 1px solid #f0e4d0;
+            margin-top: 1rem;
+        }
+        @media (max-width: 550px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .header h1 { font-size: 1.7rem; }
+            .display-text { font-size: 1rem; line-height: 1.8rem; }
         }
     </style>
 </head>
 <body>
-<div class="app">
+<div class="app-container">
     <div class="header">
-        <h1>🌸 چمنِ طیبہ 🌸</h1>
-        <p>نعت، حمد، مناقب، سلام</p>
+        <h1><i class="fas fa-leaf"></i> چمنِ طیبہ <i class="fas fa-mosque"></i></h1>
+        <p>نعت، حمد اور منقبت کا خوشنما مجموعہ</p>
     </div>
+    <div class="main-content">
+        <!-- Categories Cards Section -->
+        <div class="section-title">
+            <i class="fas fa-th-large"></i>
+            <span>اقسام / Categories</span>
+        </div>
+        <div id="categoriesCardsContainer" class="cards-grid">
+            <!-- dynamic cards from JSON -->
+        </div>
 
-    <div class="content" id="contentArea">
-        <div class="loading">📖 لوڈ ہو رہا ہے...</div>
-    </div>
+        <!-- Tabs (alternative category selector) -->
+        <div class="section-title">
+            <i class="fas fa-tab"></i>
+            <span>ٹیبز / Tabs</span>
+        </div>
+        <div id="tabsContainer" class="tabs-row">
+            <!-- dynamic tab buttons -->
+        </div>
 
-    <div class="bottom-tabs">
-        <div class="tab" data-tab="home"><i>🏠</i><span>ہوم</span></div>
-        <div class="tab" data-tab="categories"><i>📂</i><span>زمرے</span></div>
-        <div class="tab" data-tab="search"><i>🔍</i><span>تلاش</span></div>
-        <div class="tab" data-tab="favorites"><i>⭐</i><span>پسندیدہ</span></div>
+        <!-- Search -->
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="عنوان سے تلاش کریں... (مثال: آقا)">
+        </div>
+
+        <!-- Lyrics List Header -->
+        <div class="section-title">
+            <i class="fas fa-list-ul"></i>
+            <span>کلام کی فہرست</span>
+        </div>
+        <div id="lyricsListContainer" class="lyrics-list">
+            <!-- lyrics items loaded here -->
+        </div>
+
+        <!-- Lyrics Full Display Area -->
+        <div id="lyricsDisplay" class="lyrics-display">
+            <div class="empty-msg">
+                <i class="fas fa-hand-point-left"></i> کسی بھی کلام پر کلک کریں، مکمل متن یہاں ظاہر ہوگا
+            </div>
+        </div>
     </div>
+    <footer>
+        <i class="fas fa-heart" style="color:#be8a3a;"></i> چمنِ طیبہ — روحانی فیض
+    </footer>
 </div>
 
 <script>
-    // ---------- DATA ----------
-    let allLyrics = [];
-    let favorites = JSON.parse(localStorage.getItem('chamane_fav') || '[]');
-    let currentTab = 'home';
-    let currentDetailId = null;
-    let previousTab = 'home';
+    // ------------------- Global Variables -------------------
+    let appData = { categories: [], lyrics: [] };
+    let activeCategoryId = null;
+    let currentLyricsList = [];    // filtered (by category + search)
+    let selectedLyricObj = null;
 
-    const contentDiv = document.getElementById('contentArea');
-    const tabs = document.querySelectorAll('.tab');
+    // DOM elements
+    const cardsContainer = document.getElementById('categoriesCardsContainer');
+    const tabsContainer = document.getElementById('tabsContainer');
+    const lyricsListDiv = document.getElementById('lyricsListContainer');
+    const lyricsDisplayDiv = document.getElementById('lyricsDisplay');
+    const searchInput = document.getElementById('searchInput');
 
-    function saveFav() {
-        localStorage.setItem('chamane_fav', JSON.stringify(favorites));
-    }
-    function isFav(id) { return favorites.includes(id); }
-    function toggleFav(id) {
-        if (isFav(id)) favorites = favorites.filter(f => f !== id);
-        else favorites.push(id);
-        saveFav();
-        if (currentTab === 'favorites') renderFavorites();
-        if (currentTab === 'detail' && currentDetailId === id) renderDetail(id);
-    }
-
+    // ------------------- Load JSON -------------------
     async function loadData() {
         try {
-            const res = await fetch('lyrics.json');
-            if (!res.ok) throw new Error();
-            allLyrics = await res.json();
-            if (!Array.isArray(allLyrics)) throw new Error();
-            renderCurrent();
-        } catch(e) {
-            contentDiv.innerHTML = `<div class="loading">⚠️ lyrics.json نہیں ملی۔ براہ کرم فائل چیک کریں</div>`;
+            const response = await fetch('lyrics.json');
+            if (!response.ok) throw new Error('JSON load failed');
+            const data = await response.json();
+            appData = data;
+            // derive active category: first category id
+            if (appData.categories.length > 0) {
+                activeCategoryId = appData.categories[0].id;
+            }
+            // recalc counts per category based on actual lyrics
+            updateCategoryCounts();
+            renderAll();
+        } catch (err) {
+            console.error(err);
+            lyricsDisplayDiv.innerHTML = `<div class="empty-msg"><i class="fas fa-exclamation-triangle"></i> ڈیٹا لوڈ نہیں ہوسکا۔ lyrics.json چیک کریں۔</div>`;
         }
     }
 
-    function renderCurrent() {
-        if (currentTab === 'home') renderHome();
-        else if (currentTab === 'categories') renderCategories();
-        else if (currentTab === 'search') renderSearch();
-        else if (currentTab === 'favorites') renderFavorites();
-        else if (currentTab === 'detail') renderDetail(currentDetailId);
-    }
-
-    function renderHome() {
-        const cats = [...new Set(allLyrics.map(l => l.category).filter(Boolean))];
-        if (!cats.length) { contentDiv.innerHTML = '<div class="loading">کوئی کیٹگری نہیں</div>'; return; }
-        let html = `<div class="grid-cats">`;
-        cats.forEach(c => { html += `<div class="cat-card" data-cat="${escapeHtml(c)}">📖 ${escapeHtml(c)}</div>`; });
-        html += `</div>`;
-        contentDiv.innerHTML = html;
-        document.querySelectorAll('.cat-card').forEach(el => {
-            el.addEventListener('click', () => showCategoryLyrics(el.getAttribute('data-cat')));
+    // Count real lyrics per category
+    function updateCategoryCounts() {
+        if (!appData.categories || !appData.lyrics) return;
+        appData.categories = appData.categories.map(cat => {
+            const count = appData.lyrics.filter(lyric => lyric.categoryId === cat.id).length;
+            return { ...cat, count };
         });
     }
 
-    function renderCategories() { renderHome(); }
+    // Filter lyrics by activeCategory + search term
+    function getFilteredLyrics() {
+        let filtered = appData.lyrics.filter(lyric => lyric.categoryId === activeCategoryId);
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        if (searchTerm) {
+            filtered = filtered.filter(lyric => lyric.title.toLowerCase().includes(searchTerm));
+        }
+        return filtered;
+    }
 
-    function showCategoryLyrics(category) {
-        const filtered = allLyrics.filter(l => l.category === category);
-        if (!filtered.length) {
-            contentDiv.innerHTML = `<div class="loading">کوئی کلام نہیں</div><button class="btn" id="backHome">واپس</button>`;
-            document.getElementById('backHome')?.addEventListener('click', () => { currentTab = 'home'; renderCurrent(); highlightTab('home'); });
+    // Render category cards, tabs, and refresh lyrics list
+    function renderAll() {
+        renderCategoriesCards();
+        renderTabs();
+        renderLyricsList();
+    }
+
+    // Cards view
+    function renderCategoriesCards() {
+        if (!appData.categories.length) {
+            cardsContainer.innerHTML = '<div class="empty-msg">کوئی قسم موجود نہیں</div>';
             return;
         }
-        let html = `<div class="cat-heading">📂 ${escapeHtml(category)}</div><div>`;
-        filtered.forEach(l => { html += `<div class="list-item" data-id="${l.id}">🎵 ${escapeHtml(l.title)}</div>`; });
-        html += `</div><button class="btn" id="backFromCat">🔙 واپس زمرے</button>`;
-        contentDiv.innerHTML = html;
-        document.querySelectorAll('.list-item').forEach(el => {
-            el.addEventListener('click', () => openDetail(parseInt(el.dataset.id)));
-        });
-        document.getElementById('backFromCat')?.addEventListener('click', () => { currentTab = 'home'; renderCurrent(); highlightTab('home'); });
-    }
-
-    function openDetail(id) {
-        currentDetailId = id;
-        previousTab = currentTab;
-        currentTab = 'detail';
-        highlightTab('', true);
-        renderDetail(id);
-    }
-
-    function renderDetail(id) {
-        const item = allLyrics.find(l => l.id === id);
-        if (!item) { renderHome(); return; }
-        const favIcon = isFav(id) ? '★' : '☆';
-        const html = `
-            <div class="detail-card">
-                <div class="detail-title">${escapeHtml(item.title)}</div>
-                <div class="lyrics-text">${escapeHtml(item.lyrics).replace(/\n/g, '<br>')}</div>
-                <div class="flex-btns">
-                    <button class="btn" id="favDetail">${favIcon} پسندیدہ</button>
-                    <button class="btn btn-outline" id="backDetail">🔙 واپس</button>
-                </div>
+        cardsContainer.innerHTML = appData.categories.map(cat => `
+            <div class="category-card ${activeCategoryId === cat.id ? 'active' : ''}" data-cat-id="${cat.id}">
+                <i class="fas ${getIconForCategory(cat.id)}"></i>
+                <span>${cat.name}</span>
+                <div class="count-badge">${cat.count || 0} کلام</div>
             </div>
-        `;
-        contentDiv.innerHTML = html;
-        document.getElementById('favDetail')?.addEventListener('click', () => { toggleFav(id); renderDetail(id); });
-        document.getElementById('backDetail')?.addEventListener('click', () => {
-            currentTab = (previousTab === 'detail' || !previousTab) ? 'home' : previousTab;
-            renderCurrent();
-            highlightTab(currentTab);
-        });
-    }
-
-    function renderSearch() {
-        contentDiv.innerHTML = `<input type="text" id="searchField" class="search-input" placeholder="🔍 عنوان / متن سے تلاش کریں..."><div id="searchResults"></div>`;
-        const input = document.getElementById('searchField');
-        input.addEventListener('input', (e) => {
-            const q = e.target.value.trim();
-            if (!q) { document.getElementById('searchResults').innerHTML = ''; return; }
-            const res = allLyrics.filter(l => l.title.toLowerCase().includes(q.toLowerCase()) || l.lyrics.toLowerCase().includes(q.toLowerCase()));
-            let out = `<div>`;
-            res.forEach(r => { out += `<div class="list-item" data-id="${r.id}">🔍 ${escapeHtml(r.title)} <span class="small-text">(${escapeHtml(r.category)})</span></div>`; });
-            out += `</div>`;
-            document.getElementById('searchResults').innerHTML = out;
-            document.querySelectorAll('#searchResults .list-item').forEach(el => {
-                el.addEventListener('click', () => openDetail(parseInt(el.dataset.id)));
+        `).join('');
+        // attach event listeners
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const catId = card.dataset.catId;
+                if (activeCategoryId !== catId) {
+                    activeCategoryId = catId;
+                    searchInput.value = '';   // reset search on category change
+                    renderAll();
+                }
             });
         });
     }
 
-    function renderFavorites() {
-        const favItems = allLyrics.filter(l => favorites.includes(l.id));
-        if (!favItems.length) { contentDiv.innerHTML = `<div class="loading">⭐ کوئی پسندیدہ کلام نہیں</div>`; return; }
-        let html = `<div>`;
-        favItems.forEach(l => { html += `<div class="list-item" data-id="${l.id}">❤️ ${escapeHtml(l.title)}</div>`; });
-        html += `</div>`;
-        contentDiv.innerHTML = html;
-        document.querySelectorAll('.list-item').forEach(el => {
-            el.addEventListener('click', () => openDetail(parseInt(el.dataset.id)));
+    // Tabs view
+    function renderTabs() {
+        if (!appData.categories.length) {
+            tabsContainer.innerHTML = '';
+            return;
+        }
+        tabsContainer.innerHTML = appData.categories.map(cat => `
+            <button class="tab-btn ${activeCategoryId === cat.id ? 'active' : ''}" data-tab-id="${cat.id}">
+                ${cat.name} (${cat.count || 0})
+            </button>
+        `).join('');
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const tabId = btn.dataset.tabId;
+                if (activeCategoryId !== tabId) {
+                    activeCategoryId = tabId;
+                    searchInput.value = '';
+                    renderAll();
+                }
+            });
         });
     }
 
-    function switchTab(tabId) {
-        if (tabId === 'detail') return;
-        previousTab = currentTab;
-        currentTab = tabId;
-        renderCurrent();
-        highlightTab(tabId);
-    }
-
-    function highlightTab(tabId, isDetail = false) {
-        tabs.forEach(tab => {
-            const val = tab.getAttribute('data-tab');
-            if (!isDetail && val === tabId) tab.classList.add('active');
-            else tab.classList.remove('active');
+    // Render lyrics list (from filtered)
+    function renderLyricsList() {
+        const filtered = getFilteredLyrics();
+        currentLyricsList = filtered;
+        if (!filtered.length) {
+            lyricsListDiv.innerHTML = `<div class="empty-msg">اس قسم میں کوئی کلام نہیں یا تلاش کا کوئی نتیجہ نہیں</div>`;
+            // clear display if needed
+            if (!selectedLyricObj || !filtered.some(l => l.id === selectedLyricObj?.id)) {
+                lyricsDisplayDiv.innerHTML = `<div class="empty-msg"><i class="fas fa-feather-alt"></i> کلام منتخب کریں</div>`;
+                selectedLyricObj = null;
+            }
+            return;
+        }
+        lyricsListDiv.innerHTML = filtered.map(lyric => `
+            <div class="lyric-item" data-lyric-id="${lyric.id}">
+                <div class="lyric-title">
+                    <span>${lyric.title}</span>
+                    <i class="fas fa-microphone-alt"></i>
+                </div>
+            </div>
+        `).join('');
+        // attach click to each lyric
+        document.querySelectorAll('.lyric-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const lyricId = parseInt(item.dataset.lyricId);
+                const found = appData.lyrics.find(l => l.id === lyricId);
+                if (found) {
+                    selectedLyricObj = found;
+                    displayFullLyrics(found);
+                }
+            });
         });
-        if (!isDetail && tabId) {
-            document.querySelector(`.tab[data-tab="${tabId}"]`)?.classList.add('active');
+        // if previously selected lyric still exists in current filtered, show it again
+        if (selectedLyricObj && filtered.some(l => l.id === selectedLyricObj.id)) {
+            displayFullLyrics(selectedLyricObj);
+        } else if (filtered.length > 0 && !selectedLyricObj) {
+            // optionally auto select first? not to annoy, but keep placeholder
+            // But we keep existing display if empty, else show first? better not auto.
+        } else if (filtered.length > 0 && (!selectedLyricObj || !filtered.some(l => l.id === selectedLyricObj.id))) {
+            // previous selected not in current => clear display
+            lyricsDisplayDiv.innerHTML = `<div class="empty-msg"><i class="fas fa-book-open"></i> نیا کلام منتخب کریں</div>`;
+            selectedLyricObj = null;
         }
     }
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const t = tab.getAttribute('data-tab');
-            switchTab(t);
-        });
-    });
+    function displayFullLyrics(lyric) {
+        if (!lyric) return;
+        const formattedText = lyric.text.replace(/\n/g, '<br>');
+        lyricsDisplayDiv.innerHTML = `
+            <div>
+                <div class="display-title">
+                    <i class="fas fa-star-of-life"></i> ${lyric.title}
+                </div>
+                <div class="display-text">
+                    ${formattedText}
+                </div>
+            </div>
+        `;
+        // smoothly scroll to display area
+        lyricsDisplayDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
+    // Search event listener
+    function bindSearchEvents() {
+        searchInput.addEventListener('input', () => {
+            renderLyricsList();   // re-filter within same category
         });
     }
 
-    loadData();
+    // Helper icons
+    function getIconForCategory(catId) {
+        const icons = {
+            'naat': 'fa-pray',
+            'hamd': 'fa-hand-peace',
+            'manqabat': 'fa-crown'
+        };
+        return icons[catId] || 'fa-leaf';
+    }
+
+    // Initialize App
+    function init() {
+        loadData().then(() => {
+            bindSearchEvents();
+        });
+    }
+    init();
 </script>
 </body>
 </html>
