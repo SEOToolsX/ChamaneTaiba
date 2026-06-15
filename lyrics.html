@@ -1,77 +1,148 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ChamaneTaiba - Lyrics</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="theme-color" content="#1a472a">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChamaneTaiba - مکمل کلام</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .lyrics-header { background: linear-gradient(135deg, #0d2818, #1a472a); padding: 20px 16px; color: white; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 10; }
-        .back-btn, .home-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 12px; border-radius: 40px; font-size: 0.9rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-        .lyrics-title { flex: 1; text-align: center; font-size: 1.3rem; font-weight: 600; margin: 0; }
-        .favorite-btn { background: none; border: none; font-size: 1.8rem; cursor: pointer; padding: 0 8px; }
-        .favorite-btn.active-fav { color: gold; text-shadow: 0 0 5px goldenrod; }
-        .lyrics-container { padding: 20px 20px 90px; direction: rtl; text-align: right; font-family: 'Noto Nastaliq Urdu', serif; font-size: 1.35rem; line-height: 2.2; background: #fffef7; min-height: 80vh; }
-        .verse { margin-bottom: 20px; padding: 8px 0; border-bottom: 1px dashed #e0d6c0; }
-        @media (max-width:480px){ .lyrics-container{ font-size:1.2rem; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif;
+            background: linear-gradient(145deg, #fef9e6 0%, #fff4e0 100%);
+            color: #2c2b28;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 245, 0.95);
+            border-radius: 2rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1f5e2d, #0c3e1f);
+            padding: 1.2rem;
+            text-align: center;
+            color: #ffefcf;
+        }
+        .header a {
+            color: #ffdd99;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,200,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 0.8rem;
+        }
+        .header h2 {
+            font-size: 1.8rem;
+        }
+        .lyric-body {
+            padding: 2rem 1.5rem;
+        }
+        .lyric-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2b5e2f;
+            border-bottom: 3px dashed #e2cfaa;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .lyric-text {
+            font-size: 1.2rem;
+            line-height: 2rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            text-align: justify;
+        }
+        .error-msg {
+            text-align: center;
+            padding: 2rem;
+            color: #b1622c;
+            font-size: 1.2rem;
+        }
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .back-home a {
+            background: #2b5e2f;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            padding: 1rem;
+            color: #ae9f83;
+            border-top: 1px solid #f0e4d0;
+        }
     </style>
 </head>
 <body>
-<div class="app-container">
-    <div class="lyrics-header">
-        <a href="index.html" class="home-btn">🏠 Home</a>
-        <button class="back-btn" onclick="window.history.back()">🔙 واپس</button>
-        <div class="lyrics-title" id="lyricsTitle">🌹 نام محمد ﷺ 🌹</div>
-        <button class="favorite-btn" id="favBtn">🤍</button>
+<div class="container">
+    <div class="header">
+        <a href="index.html"><i class="fas fa-home"></i> چمنِ طیبہ واپس</a>
+        <h2><i class="fas fa-book-open"></i> مکمل کلام</h2>
     </div>
-    <div class="lyrics-container" id="lyricsContainer">
-        <!-- Lyrics will be loaded here -->
+    <div class="lyric-body" id="lyricContent">
+        <div class="error-msg">لوڈ ہو رہا ہے...</div>
     </div>
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item">🏠 Home</a>
-        <a href="naats.html" class="nav-item">📖 Naats</a>
-        <a href="favorites.html" class="nav-item">⭐ Favorites</a>
-    </nav>
+    <footer>
+        <i class="fas fa-heart" style="color:#be8a3a;"></i> چمنِ طیبہ — روحانی فیض
+    </footer>
 </div>
-<script src="data.js"></script>
+
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const naatId = urlParams.get('id');
-    const naat = allNaats.find(n => n.id === naatId);
-    if (naat) {
-        document.getElementById('lyricsTitle').innerHTML = `🌹 ${naat.title} 🌹`;
-        document.getElementById('lyricsContainer').innerHTML = naat.lyrics;
-        document.getElementById('favBtn').setAttribute('data-id', naat.id);
-    } else {
-        document.getElementById('lyricsContainer').innerHTML = '<div style="text-align:center;">❌ نعت نہیں ملی</div>';
-    }
-    // Favorite logic
-    const favBtn = document.getElementById('favBtn');
-    function updateFavButton() {
-        let favs = JSON.parse(localStorage.getItem('chamanetaiba_favorites') || '[]');
-        if (favs.includes(naat.id)) {
-            favBtn.innerHTML = '❤️';
-            favBtn.classList.add('active-fav');
-        } else {
-            favBtn.innerHTML = '🤍';
-            favBtn.classList.remove('active-fav');
+    async function loadLyric() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lyricId = parseInt(urlParams.get('id'));
+        if (!lyricId || isNaN(lyricId)) {
+            document.getElementById('lyricContent').innerHTML = `<div class="error-msg">❌ غلط لنک - کوئی ID موجود نہیں</div>`;
+            return;
+        }
+        try {
+            const response = await fetch('lyrics.json');
+            if (!response.ok) throw new Error('JSON not found');
+            const data = await response.json();
+            const lyric = data.lyrics.find(l => l.id === lyricId);
+            if (!lyric) {
+                document.getElementById('lyricContent').innerHTML = `<div class="error-msg">❌ کلام نہیں ملا۔ ممکن ہے ID غلط ہو۔</div>`;
+                return;
+            }
+            // find category name for extra info (optional)
+            const category = data.categories.find(c => c.id === lyric.categoryId);
+            const catName = category ? category.name : '';
+            const formattedText = lyric.text.replace(/\n/g, '<br>');
+            document.getElementById('lyricContent').innerHTML = `
+                <div class="lyric-title">${lyric.title} <span style="font-size:0.9rem;">(${catName})</span></div>
+                <div class="lyric-text">${formattedText}</div>
+                <div class="back-home"><a href="index.html"><i class="fas fa-arrow-right"></i> مزید کلام پڑھیں</a></div>
+            `;
+        } catch (err) {
+            document.getElementById('lyricContent').innerHTML = `<div class="error-msg">❌ ڈیٹا لوڈ کرنے میں خرابی۔ lyrics.json چیک کریں۔</div>`;
         }
     }
-    function toggleFavorite() {
-        let favs = JSON.parse(localStorage.getItem('chamanetaiba_favorites') || '[]');
-        if (favs.includes(naat.id)) {
-            favs = favs.filter(id => id !== naat.id);
-        } else {
-            favs.push(naat.id);
-        }
-        localStorage.setItem('chamanetaiba_favorites', JSON.stringify(favs));
-        updateFavButton();
-    }
-    if (naat) {
-        favBtn.addEventListener('click', toggleFavorite);
-        updateFavButton();
-    }
+    loadLyric();
 </script>
 </body>
 </html>
