@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ChamaneTaiba - نام محمد ﷺ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a472a">
+    <style>
+        /* lyrics page specific styles */
+        .lyrics-header {
+            background: linear-gradient(135deg, #0d2818, #1a472a);
+            padding: 20px 16px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .back-btn, .home-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+        .back-btn:hover, .home-btn:hover {
+            background: rgba(255,255,255,0.4);
+        }
+        .lyrics-title {
+            flex: 1;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .favorite-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0 8px;
+            transition: transform 0.2s;
+        }
+        .favorite-btn.active-fav {
+            color: gold;
+            text-shadow: 0 0 5px goldenrod;
+        }
+        .lyrics-container {
+            padding: 20px 20px 90px;
+            direction: rtl;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', 'Times New Roman', serif;
+            font-size: 1.35rem;
+            line-height: 2.2;
+            background: #fffef7;
+            min-height: 80vh;
+        }
+        .verse {
+            margin-bottom: 20px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0d6c0;
+        }
+        .verse:last-child {
+            border-bottom: none;
+        }
+        @media (max-width: 480px) {
+            .lyrics-container {
+                font-size: 1.2rem;
+                padding: 16px 16px 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <!-- Custom header for lyrics page -->
+    <div class="lyrics-header">
+        <a href="index.html" class="home-btn">🏠 Home</a>
+        <button class="back-btn" onclick="window.history.back()">🔙 واپس</button>
+        <div class="lyrics-title">🌹 نام محمد ﷺ 🌹</div>
+        <button class="favorite-btn" id="favBtn" data-id="naat1">🤍</button>
+    </div>
+
+    <!-- Lyrics Content -->
+    <div class="lyrics-container">
+        <div class="verse">
+            نام محمد صلی اللہ علیہ وسلم<br>
+            لکھا تو دل پہ نقش ہوا<br>
+            نورِ خدا کا دریا بہا<br>
+            ہر آنکھ نے جلوہ دیکھ لیا
+        </div>
+        <div class="verse">
+            آقاﷺ کا لفظ ہے جادو کوئی<br>
+            پڑھتے ہی دل کی دھڑکن بدل جائے<br>
+            تیرے در کا فقیر ہوں میں<br>
+            مجھے دامن سے لگا لے سائیں
+        </div>
+        <div class="verse">
+            مدینے کی گلیوں میں کھو کر<br>
+            میں نے سکون کا راز پا لیا<br>
+            یا رسول اللہﷺ شفیع المجرمین<br>
+            اپنے گنہگار کو تو دے دامن
+        </div>
+        <div class="verse">
+            تیری نعت کہوں تو کیا کہوں<br>
+            حرف حرف نور کا چشمہ ہے<br>
+            چمنِ طیبہ سے ہوا چلی<br>
+            ہر سانس اب مدینہ سے ہے
+        </div>
+        <div class="verse">
+            صلی اللہ علیہ وسلم و سلم<br>
+            ہر نماز کے بعد یہ پڑھنا<br>
+            نام محمد ﷺ کی برکت سے<br>
+            دل کا ہر غم دھل گیا اپنا
+        </div>
+    </div>
+
+    <!-- Bottom Navigation optional (you can keep or remove) -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">🏠 Home</a>
+        <a href="naats.html" class="nav-item">📖 Naats</a>
+        <a href="favorites.html" class="nav-item">⭐ Favorites</a>
+    </nav>
+</div>
+
+<script>
+    // Favorite functionality for this page
+    const favBtn = document.getElementById('favBtn');
+    const naatId = favBtn.getAttribute('data-id');
+
+    function updateFavButton() {
+        let favs = JSON.parse(localStorage.getItem('chamanetaiba_favorites') || '[]');
+        if (favs.includes(naatId)) {
+            favBtn.innerHTML = '❤️';
+            favBtn.classList.add('active-fav');
+        } else {
+            favBtn.innerHTML = '🤍';
+            favBtn.classList.remove('active-fav');
+        }
+    }
+
+    function toggleFavorite() {
+        let favs = JSON.parse(localStorage.getItem('chamanetaiba_favorites') || '[]');
+        if (favs.includes(naatId)) {
+            favs = favs.filter(id => id !== naatId);
+        } else {
+            favs.push(naatId);
+        }
+        localStorage.setItem('chamanetaiba_favorites', JSON.stringify(favs));
+        updateFavButton();
+    }
+
+    favBtn.addEventListener('click', toggleFavorite);
+    updateFavButton();
+</script>
+</body>
+</html>
